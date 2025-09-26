@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Mini Chat",
+  "version": "1.0",
+  "description": "Extension de mini chat pour partager facilement des liens et clés CD entre vous et votre copine",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://*.firebaseio.com/*",
+    "https://*.googleapis.com/*",
+    "https://*.firebasedatabase.app/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Mini Chat",
+    "default_icon": "icone.png"
+  },
+  "background": {
+    "service_worker": "background-simple.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "icone.png"
+  }
+}

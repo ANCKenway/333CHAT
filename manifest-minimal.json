@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Mini Chat",
+  "version": "1.0",
+  "description": "Extension de mini chat pour partager facilement des liens et clés CD",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Mini Chat"
+  }
+}

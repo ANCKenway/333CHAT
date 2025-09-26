@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Chat</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <!-- Écran de configuration initial -->
+    <div class="setup-container" id="setupContainer">
+        <div class="setup-header">
+            <h2>💬 Bienvenue dans Mini Chat</h2>
+            <p>Rejoignez ou créez un salon de discussion</p>
+        </div>
+        
+        <div class="setup-form">
+            <div class="setup-field">
+                <label for="setupUserId">Votre pseudo :</label>
+                <input type="text" id="setupUserId" placeholder="Ex: Xavier" maxlength="15">
+                <small>Votre nom dans le salon</small>
+            </div>
+            
+            <div class="setup-field">
+                <label for="setupRoomId">Nom du salon :</label>
+                <input type="text" id="setupRoomId" placeholder="Ex: famille, gaming, travail..." maxlength="20">
+                <small>Nom du salon à rejoindre ou créer</small>
+            </div>
+            
+            <div class="setup-field">
+                <label for="setupRoomPassword">Mot de passe (optionnel) :</label>
+                <input type="password" id="setupRoomPassword" placeholder="Laisser vide pour salon public" maxlength="20">
+                <small>Protection du salon (optionnel)</small>
+            </div>
+            
+            <div class="setup-actions">
+                <button id="joinRoomBtn" class="start-btn">� Rejoindre le salon</button>
+                <button id="quickDemoBtn" class="skip-btn">⚡ Démo rapide (salon test)</button>
+            </div>
+        </div>
+        
+        <div class="setup-info">
+            <h4>✨ Fonctionnalités :</h4>
+            <ul>
+                <li>� Discussion multi-utilisateurs</li>
+                <li>🔒 Salons privés avec mot de passe</li>
+                <li>�🔗 Partage de liens automatique</li>
+                <li>🎮 Détection de clés CD</li>
+                <li>📋 Partage du presse-papier</li>
+            </ul>
+            
+            <div class="room-examples">
+                <h5>� Exemples de salons :</h5>
+                <div class="example-rooms">
+                    <span class="room-tag">famille</span>
+                    <span class="room-tag">gaming</span>
+                    <span class="room-tag">travail</span>
+                    <span class="room-tag">amis</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface de chat principale -->
+    <div class="chat-container" id="chatContainer" style="display: none;">
+        <div class="chat-header">
+            <div class="room-info">
+                <h2 id="roomTitle">💬 Salon: ...</h2>
+                <small id="roomSubtitle">En attente...</small>
+            </div>
+            <div class="header-controls">
+                <div class="status-indicator">
+                    <span class="status-dot offline" id="statusDot"></span>
+                    <span class="status-text" id="statusText">Chargement...</span>
+                </div>
+                <div class="online-count" id="onlineCount" title="Utilisateurs connectés">
+                    <span class="count-number">0</span>
+                    <span class="count-icon">👥</span>
+                </div>
+                <button class="settings-btn" id="settingsBtn" title="Changer de salon">🚪</button>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                Bienvenue dans votre mini chat ! 🎉<br>
+                Partagez facilement des liens et des clés CD.
+            </div>
+        </div>
+        
+        <div class="quick-actions">
+            <button class="quick-btn" id="shareCurrentTab">📄 Partager cette page</button>
+            <button class="quick-btn" id="shareClipboard">📋 Partager le presse-papier</button>
+        </div>
+        
+        <div class="quick-suggestions" id="quickSuggestions">
+            <!-- Les suggestions seront ajoutées dynamiquement -->
+        </div>
+        
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Tapez votre message ici... (Entrée pour envoyer, Shift+Entrée pour nouvelle ligne)"
+                    rows="2"
+                ></textarea>
+                <button id="sendButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="chat-settings">
+            <div class="user-id-section">
+                <label for="userId">Votre ID utilisateur:</label>
+                <input type="text" id="userId" placeholder="Entrez votre pseudo">
+            </div>
+            <div class="partner-id-section">
+                <label for="partnerId">ID de votre copine:</label>
+                <input type="text" id="partnerId" placeholder="Entrez son pseudo">
+            </div>
+            <div class="share-code-section">
+                <button id="generateShareCode" class="quick-btn">🔗 Générer code de partage</button>
+                <input type="text" id="shareCodeInput" placeholder="Entrer un code de partage" style="margin-top: 4px; width: 100%; padding: 4px;">
+            </div>
+            <button id="clearHistory" class="clear-btn">🗑️ Vider l'historique</button>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK local -->
+    <script src="firebase-app.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-database.js"></script>
+    
+    <script src="utils.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="firebase-loader.js"></script>
+    <script src="firebase-manager.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
