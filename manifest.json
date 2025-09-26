@@ -17,7 +17,7 @@
   "action": {
     "default_popup": "popup.html",
     "default_title": "333CHAT",
-    "default_icon": "icone.png"
+    "default_icon": "icon.png"
   },
   "background": {
     "service_worker": "background-simple.js"
@@ -30,6 +30,6 @@
     }
   ],
   "icons": {
-    "128": "icone.png"
+    "128": "icon.png"
   }
 }

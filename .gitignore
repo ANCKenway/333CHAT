@@ -1,0 +1,16 @@
+# Fichiers de configuration sensibles
+firebase-config.js
+
+# Fichiers temporaires
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Dossiers de développement
+node_modules/
+.vscode/
+333CHAT-privacy/
+
+# Archives
+*.zip

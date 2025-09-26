@@ -43,7 +43,10 @@ cd 333CHAT
 ### 2. Configuration Firebase
 1. **Créer un projet** sur [Firebase Console](https://console.firebase.google.com)
 2. **Activer Realtime Database** en mode test
-3. **Copier votre config** dans `firebase-config.js` :
+3. **Copier le template** : `cp firebase-config.template.js firebase-config.js`
+4. **Éditer `firebase-config.js`** avec vos vraies clés Firebase :
+
+**⚠️ Note** : Le fichier `firebase-config.js` est ignoré par git pour protéger vos clés.
 
 ```javascript
 const firebaseConfig = {
