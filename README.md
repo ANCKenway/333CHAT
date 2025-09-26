@@ -1,241 +1,195 @@
-# 💬 Mini Chat - Extension Chrome
+# 🚀 333CHAT - Extension Chrome
 
-Une extension Chrome simple et élégante pour partager facilement des liens, clés CD, et messages entre vous et votre copine, sans passer par email ou Discord.
+Extension Chrome moderne pour chat en temps réel avec système de salons, heartbeat intelligent et interface épurée.
 
-## ✨ Fonctionnalités
+![333CHAT](https://img.shields.io/badge/Chrome-Extension-blue?style=for-the-badge&logo=googlechrome)
+![Firebase](https://img.shields.io/badge/Firebase-Realtime-orange?style=for-the-badge&logo=firebase)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
 
-- **Système de salons** : Discussions multi-utilisateurs organisées par salons
-- **Salons privés** : Protection par mot de passe optionnel
-- **Utilisateurs connectés** : Voir qui est en ligne dans votre salon
-- **Chat instantané** : Messages avec horodatage, expéditeur et historique
-- **Détection automatique** : 
-  - 🔗 Liens web
-  - 🎮 Clés CD et codes de jeu
-  - 📧 Adresses email
-  - 🎫 Codes promo
-  - 📞 Numéros de téléphone
-- **Partage rapide** :
-  - Partager la page courante d'un clic
-  - Partager le contenu du presse-papier
-  - Boutons de copie pour tous les contenus détectés
-- **Codes de partage** : Générer des codes temporaires pour partager facilement
-- **Interface moderne** : Design élégant avec animations fluides
-- **Stockage par salon** : Historique séparé pour chaque salon
+## ✨ Fonctionnalités principales
 
-## 🚀 Installation
+### 🎯 Interface moderne
+- **Navigation 3 pages** : Accueil → Création/Connexion → Chat
+- **Design épuré** : Interface intuitive et réactive
+- **Notifications élégantes** : Messages d'état visuels (plus d'alerts Chrome)
+- **Bouton déconnexion** : Action claire et explicite
 
-### Option 1 : Installation en mode développeur
+### 💡 Système intelligent
+- **Heartbeat automatique** : Présence utilisateur mise à jour toutes les 2 minutes
+- **Détection d'activité** : Utilisateurs actifs pendant 10 minutes
+- **Reconnexion auto** : Reprise de session après fermeture
+- **Nettoyage intelligent** : Suppression des salons inactifs (1h public, 24h privé)
 
-1. **Télécharger l'extension**
-   - Téléchargez tous les fichiers de ce dossier
-   - Ou clonez le projet : `git clone [url]`
+### 🔐 Gestion des salons
+- **Salons privés** : Checkbox intuitive révélant le champ mot de passe
+- **Icônes cadenas** : Indication visuelle des salons privés (🔒)
+- **Liste des serveurs** : Clic direct pour rejoindre
+- **Création simplifiée** : Nom + option privée = c'est parti !
 
-2. **Ouvrir Chrome**
-   - Allez dans `chrome://extensions/`
-   - Activez le "Mode développeur" (en haut à droite)
+### 🔥 Firebase temps réel
+- **Synchronisation instantanée** : Messages partagés en temps réel
+- **Persistance** : Historique sauvegardé par salon
+- **Multi-utilisateurs** : Chat collaboratif véritable
+- **Robuste** : Gestion d'erreurs silencieuse (console.log)
 
-3. **Charger l'extension**
-   - Cliquez sur "Charger l'extension non empaquetée"
-   - Sélectionnez le dossier contenant les fichiers de l'extension
-   - L'extension apparaîtra dans votre barre d'outils
+## 🚀 Installation rapide
 
-### Option 2 : Utilisation de votre icône existante
+### 1. Cloner le projet
+```bash
+git clone https://github.com/ANCKenway/333CHAT.git
+cd 333CHAT
+```
 
-✅ **Votre icône `icone.png` est déjà configurée !**
+### 2. Configuration Firebase
+1. **Créer un projet** sur [Firebase Console](https://console.firebase.google.com)
+2. **Activer Realtime Database** en mode test
+3. **Copier votre config** dans `firebase-config.js` :
 
-L'extension utilisera automatiquement votre fichier `icone.png` pour toutes les tailles d'icône nécessaires. Aucune action supplémentaire requise.
+```javascript
+const firebaseConfig = {
+  apiKey: "votre-api-key",
+  authDomain: "votre-projet.firebaseapp.com",
+  databaseURL: "https://votre-projet-rtdb.firebaseio.com/",
+  projectId: "votre-projet",
+  storageBucket: "votre-projet.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "votre-app-id"
+};
+```
 
-## 📱 Utilisation
+### 3. Charger dans Chrome
+1. **Ouvrir** `chrome://extensions/`
+2. **Activer** le mode développeur
+3. **Charger** l'extension non empaquetée (dossier `333CHROME`)
+4. **Prêt !** L'icône 333CHAT apparaît dans la barre
 
-### 🎯 Première utilisation (Système de salons)
+## 📱 Guide d'utilisation
 
-1. **Cliquez sur l'icône** de l'extension dans la barre d'outils
-2. **L'écran de bienvenue apparaît** automatiquement
-3. **Configurez votre accès** :
-   - **Votre pseudo** (ex: Xavier)
-   - **Nom du salon** (ex: famille, gaming, travail...)
-   - **Mot de passe** (optionnel pour salon privé)
-4. **Cliquez sur "� Rejoindre le salon"**
-5. **C'est parti !** Vous chattez avec tous les membres du salon
+### 🏠 Page d'accueil
+1. **Saisir votre pseudo** dans le champ principal
+2. **Choisir une action** :
+   - 🚪 **Rejoindre un salon** : Accès à un salon existant
+   - ➕ **Créer un salon** : Nouveau salon
+3. **Consulter la liste** des serveurs actifs
 
-### ⚡ Ou mode démo rapide
+### ➕ Créer un salon
+1. **Nom du salon** : Choisissez un nom unique
+2. **Salon privé** : Cochez pour activer le mot de passe
+3. **Mot de passe** : Apparaît si "privé" est coché
+4. **Créer** : Vous êtes connecté automatiquement !
 
-- Cliquez sur **"⚡ Démo rapide (salon test)"** pour tester immédiatement
-- Vous serez dans le salon "demo" avec un pseudo aléatoire
+### 🚪 Rejoindre un salon
+- **Depuis la liste** : Clic direct sur un salon
+- **Par recherche** : Tapez le nom exact
+- **Salon privé** : Saisissez le mot de passe (🔒 visible)
 
-### 🏠 Exemples de salons
+### 💬 Chat en action
+- **Messages temps réel** : Synchronisation Firebase instantanée
+- **Présence active** : Heartbeat maintient votre connexion
+- **Liste utilisateurs** : Qui est connecté en temps réel
+- **Historique persistant** : Messages sauvegardés par salon
 
-- **famille** - Chat familial privé
-- **gaming** - Partage de clés de jeux
-- **travail** - Liens et documents professionnels
-- **amis** - Discussion générale
-- Ou créez le vôtre avec n'importe quel nom !
+## 🛠️ Architecture technique
 
-### 💬 Envoyer des messages
-
-- **Tapez votre message** et appuyez sur Entrée
-- **Shift + Entrée** pour une nouvelle ligne
-- **Utilisez les boutons rapides** :
-  - 📄 Partager la page courante
-  - 📋 Partager le presse-papier
-- **Bouton 🚪** (en haut à droite) pour changer de salon
-- **Compteur 👥** : Voir le nombre d'utilisateurs connectés au salon
-
-### Contenus détectés automatiquement
-
-L'extension détecte et formate automatiquement :
-
-- **Liens** : `https://example.com`
-- **Clés CD** : `ABCD-1234-EFGH-5678`
-- **Emails** : `exemple@email.com`
-- **Codes promo** : `PROMO2024`
-- **Téléphones** : `06 12 34 56 78`
-
-Chaque contenu détecté aura un bouton "Copier" pour faciliter l'utilisation.
-
-### Codes de partage
-
-1. **Générer un code** : Cliquez sur "Générer code de partage"
-2. **Partager le code** : Envoyez le code généré (8 caractères) à votre copine
-3. **Utiliser un code** : Entrez un code reçu dans le champ correspondant
-
-## 🔧 Structure du projet
-
+### Structure projet
 ```
 333CHROME/
-├── manifest.json      # Configuration de l'extension
-├── popup.html        # Interface utilisateur
-├── popup.css         # Styles et animations
-├── popup.js          # Logique principale
-├── background.js     # Service worker
-├── content.js        # Script d'injection de page
-├── utils.js          # Utilitaires de détection
-├── icons/            # Icônes de l'extension
-│   ├── icon.svg      # Icône source SVG
-│   ├── icon16.png    # À créer
-│   ├── icon32.png    # À créer
-│   ├── icon48.png    # À créer
-│   └── icon128.png   # À créer
-└── README.md         # Ce fichier
+├── manifest.json          # Configuration extension Chrome
+├── popup.html            # Interface utilisateur (3 pages)
+├── popup.css             # Styles modernes + animations
+├── popup.js              # Logique principale (774 lignes)
+├── firebase-manager.js   # Gestion Firebase + heartbeat
+├── firebase-config.js    # Configuration Firebase (à créer)
+├── utils.js              # Utilitaires et helpers
+├── icons/
+│   └── icone.png        # Icône extension (toutes tailles)
+└── README.md            # Ce fichier
 ```
 
-## 🛠️ Développement avancé
+### Technologies utilisées
+- **Chrome Extension Manifest V3** : Standard moderne
+- **Firebase Realtime Database** : Synchronisation temps réel
+- **Vanilla JavaScript ES6+** : Performance optimale
+- **CSS3 Grid/Flexbox** : Layout responsif
+- **Local Storage** : Cache et préférences
 
-### Personnalisation
+### Fonctionnalités avancées
+- **Heartbeat système** : `startHeartbeat()` / `stopHeartbeat()`
+- **Nettoyage auto** : `cleanupInactiveRooms()`
+- **Gestion erreurs** : Console.log silencieux
+- **Notifications** : `showNotification()` système
+- **TempUserId** : Sessions temporaires automatiques
 
-1. **Couleurs** : Modifiez les gradients dans `popup.css`
-2. **Patterns** : Ajoutez de nouveaux patterns dans `utils.js`
-3. **Messages simulés** : Modifiez `background.js` pour changer les messages de démonstration
+## 🎨 Personnalisation
 
-### Synchronisation réelle
-
-Pour une vraie synchronisation entre navigateurs :
-
-1. **Firebase** : Utilisez Firebase Realtime Database
-2. **Supabase** : Base de données en temps réel
-3. **WebRTC** : Communication peer-to-peer
-4. **API custom** : Votre propre serveur
-
-Exemple d'intégration Firebase :
-```javascript
-// Dans background.js
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, push, onValue } from 'firebase/database';
-
-// Configuration Firebase (remplacez par vos clés)
-const firebaseConfig = { /* vos clés */ };
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-```
-
-## 🎨 Personnalisation visuelle
-
-### Changer les couleurs
-
-Dans `popup.css`, modifiez les gradients :
-
+### Modifier les couleurs
+Dans `popup.css` :
 ```css
-/* Thème violet (défaut) */
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Thème principal */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
 
-/* Thème bleu */
-background: linear-gradient(135deg, #2196f3 0%, #21cbf3 100%);
-
-/* Thème rose */
-background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+/* Thème alternatif bleu */
+.gradient-bg {
+  background: linear-gradient(135deg, #2196f3 0%, #21cbf3 100%);
+}
 ```
 
-### Ajouter des animations
+### Ajuster le heartbeat
+Dans `firebase-manager.js` :
+```javascript
+// Intervalle heartbeat (défaut: 2 minutes)
+const HEARTBEAT_INTERVAL = 2 * 60 * 1000;
 
-L'extension supporte déjà des animations fluides. Vous pouvez en ajouter d'autres dans `popup.css`.
+// Fenêtre d'activité (défaut: 10 minutes)
+const tenMinutesAgo = now - (10 * 60 * 1000);
+```
 
-## 🔒 Confidentialité et sécurité
+## 🔧 Développement
 
-- **Stockage local** : Les messages sont stockés localement sur chaque navigateur
-- **Pas de serveur** : Aucune donnée n'est envoyée à des serveurs tiers
-- **Simulation** : La synchronisation actuelle est simulée pour démonstration
-- **Permissions minimales** : L'extension ne demande que les permissions nécessaires
+### Débogage
+1. **Console Chrome** : F12 → Console pour les logs
+2. **Extension devtools** : Outils de développement dédiés
+3. **Firebase console** : Monitoring temps réel des données
 
-## 🐛 Dépannage
+### Contribution
+1. **Fork** le projet
+2. **Créer** une branche feature (`git checkout -b feature/nouvelle-fonctionnalite`)
+3. **Commit** vos changements (`git commit -am 'Ajout nouvelle fonctionnalité'`)
+4. **Push** la branche (`git push origin feature/nouvelle-fonctionnalite`)
+5. **Pull Request** vers main
 
-### L'extension ne s'affiche pas
-1. Vérifiez que le mode développeur est activé
-2. Actualisez la page des extensions
-3. Vérifiez les erreurs dans la console
+## 🚦 État du projet
 
-### Les messages ne se synchronisent pas
-1. La synchronisation actuelle est simulée
-2. Vérifiez que les deux utilisateurs ont configuré leurs IDs
-3. Pour une vraie sync, implémentez Firebase ou une autre solution
+### ✅ Fonctionnalités complètes
+- [x] Interface 3 pages finalisée
+- [x] Système heartbeat opérationnel
+- [x] Salons privés avec mot de passe
+- [x] Reconnexion automatique
+- [x] Notifications visuelles
+- [x] Nettoyage automatique des salons
+- [x] Firebase temps réel intégré
+- [x] Gestion d'erreurs robuste
 
-### Erreurs de console
-1. Ouvrez les outils de développeur (F12)
-2. Vérifiez l'onglet Console pour les erreurs
-3. Vérifiez l'onglet Extensions pour les erreurs d'extension
+### 🎯 Version actuelle : **1.0.0**
+- Extension complètement fonctionnelle
+- Code nettoyé et optimisé
+- Prête pour utilisation quotidienne
+- Interface finale validée
 
 ## 📞 Support
 
-Pour des questions ou améliorations :
-
-1. **Issues GitHub** : Si le projet est sur GitHub
-2. **Documentation** : Consultez les commentaires dans le code
-3. **Communauté** : Forums de développement Chrome Extensions
-
-## � Notes importantes
-
-### 💾 **Stockage actuel**
-- **Stockage local** : Les messages sont stockés localement dans chaque navigateur Chrome
-- **Simulation** : Les "autres utilisateurs" sont simulés pour la démonstration
-- **Pas de serveur** : Actuellement aucune synchronisation réelle entre navigateurs
-- **Historique conservé** : Vos messages sont sauvegardés par salon dans Chrome
-
-### 🌐 **Pour une vraie synchronisation**
-- **Firebase recommandé** : Solution gratuite pour chat en temps réel
-- **Voir TECHNICAL-INFO.md** : Guide complet pour implémenter Firebase
-- **Alternative** : Supabase, WebRTC ou serveur custom
-
-### ⚠️ **Limitations actuelles**
-- Les "autres utilisateurs" sont des simulations
-- Pas de vraie synchronisation entre différents navigateurs/ordinateurs
-- Pour un vrai usage multi-utilisateurs, une base de données en ligne est nécessaire
-
-## �📋 TODO / Améliorations futures
-
-- [ ] Synchronisation réelle avec Firebase/Supabase
-- [ ] Notifications desktop
-- [ ] Chiffrement des messages
-- [ ] Thèmes personnalisables
-- [ ] Support des fichiers (images, documents)
-- [ ] Historique de recherche
-- [ ] Messages temporaires (qui s'auto-détruisent)
-- [ ] Mode sombre
-- [ ] Raccourcis clavier
-- [ ] Export/Import de l'historique
+- **Issues GitHub** : [Signaler un problème](https://github.com/ANCKenway/333CHAT/issues)
+- **Discussions** : [Questions et suggestions](https://github.com/ANCKenway/333CHAT/discussions)
+- **Wiki** : Documentation complète (à venir)
 
 ## 📄 Licence
 
-Projet personnel - Utilisation libre pour usage privé.
+Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE) pour les détails.
 
 ---
 
-**Bon chat dans vos salons ! 💬�**
+**🎉 Prêt à chatter ? Lancez 333CHAT et créez votre premier salon !**
+
+*Extension développée avec ❤️ pour une communication fluide et moderne.*
