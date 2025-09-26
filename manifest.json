@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Mini Chat",
+  "name": "333CHAT",
   "version": "1.0",
-  "description": "Extension de mini chat pour partager facilement des liens et clés CD entre vous et votre copine",
+  "description": "Extension de chating éphémère pour communiquer facilement via un système de salon public ou privé",
   "permissions": [
     "storage",
     "activeTab",
@@ -16,7 +16,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Mini Chat",
+    "default_title": "333CHAT",
     "default_icon": "icone.png"
   },
   "background": {

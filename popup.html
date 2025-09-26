@@ -7,125 +7,149 @@
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <!-- Écran de configuration initial -->
+    <!-- Zone de notifications -->
+    <div id="notificationArea" class="notification-area"></div>
+    
+    <!-- Interface de connexion simplifiée -->
     <div class="setup-container" id="setupContainer">
-        <div class="setup-header">
-            <h2>💬 Bienvenue dans Mini Chat</h2>
-            <p>Rejoignez ou créez un salon de discussion</p>
-        </div>
         
-        <div class="setup-form">
-            <div class="setup-field">
-                <label for="setupUserId">Votre pseudo :</label>
-                <input type="text" id="setupUserId" placeholder="Ex: Xavier" maxlength="15">
-                <small>Votre nom dans le salon</small>
+        <!-- Page principale de connexion -->
+        <div class="main-page" id="mainPage">
+            <div class="setup-header">
+                <h2>Mini Chat</h2>
+                <p>Entrez dans un salon de discussion</p>
             </div>
             
-            <div class="setup-field">
-                <label for="setupRoomId">Nom du salon :</label>
-                <input type="text" id="setupRoomId" placeholder="Ex: famille, gaming, travail..." maxlength="20">
-                <small>Nom du salon à rejoindre ou créer</small>
-            </div>
-            
-            <div class="setup-field">
-                <label for="setupRoomPassword">Mot de passe (optionnel) :</label>
-                <input type="password" id="setupRoomPassword" placeholder="Laisser vide pour salon public" maxlength="20">
-                <small>Protection du salon (optionnel)</small>
-            </div>
-            
-            <div class="setup-actions">
-                <button id="joinRoomBtn" class="start-btn">� Rejoindre le salon</button>
-                <button id="quickDemoBtn" class="skip-btn">⚡ Démo rapide (salon test)</button>
-            </div>
-        </div>
-        
-        <div class="setup-info">
-            <h4>✨ Fonctionnalités :</h4>
-            <ul>
-                <li>� Discussion multi-utilisateurs</li>
-                <li>🔒 Salons privés avec mot de passe</li>
-                <li>�🔗 Partage de liens automatique</li>
-                <li>🎮 Détection de clés CD</li>
-                <li>📋 Partage du presse-papier</li>
-            </ul>
-            
-            <div class="room-examples">
-                <h5>� Exemples de salons :</h5>
-                <div class="example-rooms">
-                    <span class="room-tag">famille</span>
-                    <span class="room-tag">gaming</span>
-                    <span class="room-tag">travail</span>
-                    <span class="room-tag">amis</span>
+            <div class="setup-form">
+                <div class="setup-field">
+                    <label for="setupUserId">Votre pseudo :</label>
+                    <input type="text" id="setupUserId" placeholder="Votre nom d'utilisateur" maxlength="15">
                 </div>
+                
+                <button id="showJoinRoomBtn" class="join-btn">Rejoindre un salon</button>
+                <button id="createRoomBtn" class="create-btn">Creer un salon</button>
+                
+                <div class="divider">----- ou -----</div>
+                
+                <button id="showServerListBtn" class="list-btn">Liste des serveurs</button>
             </div>
         </div>
+        
+        <!-- Page rejoindre un salon -->
+        <div class="join-room-page" id="joinRoomPage" style="display: none;">
+            <div class="setup-header">
+                <h2>Rejoindre un salon</h2>
+                <p>Entrez le nom du salon a rejoindre</p>
+            </div>
+            
+            <div class="setup-form">
+                <div class="setup-field">
+                    <label for="joinRoomId">Nom du salon :</label>
+                    <input type="text" id="joinRoomId" placeholder="Nom du salon a rejoindre" maxlength="20">
+                </div>
+                
+                <button id="joinRoomConfirmBtn" class="join-btn">Rejoindre</button>
+                <button id="backFromJoinBtn" class="back-btn">Retour</button>
+            </div>
+        </div>
+        
+        <!-- Page creation de salon -->
+        <div class="create-room-page" id="createRoomPage" style="display: none;">
+            <div class="setup-header">
+                <h2>Creer un salon</h2>
+                <p>Configurez votre nouveau salon</p>
+            </div>
+            
+            <div class="setup-form">
+                <div class="setup-field">
+                    <label for="createRoomName">Nom du salon :</label>
+                    <input type="text" id="createRoomName" placeholder="Nom de votre salon" maxlength="20">
+                </div>
+                
+                <div class="setup-field">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="isPrivateRoom"> Salon privé
+                    </label>
+                </div>
+                
+                <div class="setup-field" id="passwordField" style="display: none;">
+                    <label for="createRoomPassword">Mot de passe :</label>
+                    <input type="password" id="createRoomPassword" placeholder="Entrez le mot de passe">
+                </div>
+                
+                <button id="createRoomConfirmBtn" class="create-btn">Creer le salon</button>
+                <button id="backFromCreateBtn" class="back-btn">Retour</button>
+            </div>
+        </div>
+        
+        <!-- Page demande de mot de passe -->
+        <div class="password-page" id="passwordPage" style="display: none;">
+            <div class="setup-header">
+                <h2>Salon prive</h2>
+                <p id="roomNameDisplay">Ce salon necessite un mot de passe</p>
+            </div>
+            
+            <div class="setup-form">
+                <div class="setup-field">
+                    <label for="roomPassword">Mot de passe :</label>
+                    <input type="password" id="roomPassword" placeholder="Entrez le mot de passe">
+                </div>
+                
+                <button id="joinWithPasswordBtn" class="join-btn">Rejoindre le salon</button>
+                <button id="backToMainBtn" class="back-btn">Retour</button>
+            </div>
+        </div>
+        
+        <!-- Liste des serveurs -->
+        <div class="server-list-page" id="serverListPage" style="display: none;">
+            <div class="setup-header">
+                <h2>Serveurs disponibles</h2>
+                <p>Cliquez sur un salon pour le rejoindre</p>
+            </div>
+            
+            <div class="servers-container">
+                <div id="serversList" class="servers-list">
+                    <div class="loading">Chargement des salons...</div>
+                </div>
+                
+                <button id="backFromServersBtn" class="back-btn">Retour</button>
+            </div>
+        </div>
+        
     </div>
 
     <!-- Interface de chat principale -->
     <div class="chat-container" id="chatContainer" style="display: none;">
         <div class="chat-header">
             <div class="room-info">
-                <h2 id="roomTitle">💬 Salon: ...</h2>
+                <h2 id="roomTitle">Salon: ...</h2>
                 <small id="roomSubtitle">En attente...</small>
             </div>
-            <div class="header-controls">
-                <div class="status-indicator">
-                    <span class="status-dot offline" id="statusDot"></span>
-                    <span class="status-text" id="statusText">Chargement...</span>
-                </div>
-                <div class="online-count" id="onlineCount" title="Utilisateurs connectés">
+            
+            <div class="header-actions">
+                <div class="online-counter" id="onlineCount">
+                    <span class="status-dot" id="statusDot"></span>
                     <span class="count-number">0</span>
-                    <span class="count-icon">👥</span>
+                    <span class="count-label">en ligne</span>
                 </div>
-                <button class="settings-btn" id="settingsBtn" title="Changer de salon">🚪</button>
+                <button id="logoutBtn" class="logout-btn">Déconnexion</button>
             </div>
         </div>
-        
+
         <div class="chat-messages" id="chatMessages">
-            <div class="welcome-message">
-                Bienvenue dans votre mini chat ! 🎉<br>
-                Partagez facilement des liens et des clés CD.
-            </div>
+            <div class="welcome-message">Salon pret ! Commencez a discuter...</div>
         </div>
         
         <div class="quick-actions">
-            <button class="quick-btn" id="shareCurrentTab">📄 Partager cette page</button>
-            <button class="quick-btn" id="shareClipboard">📋 Partager le presse-papier</button>
+            <button class="quick-btn" id="shareCurrentTab">Partager cette page</button>
+            <button class="quick-btn" id="shareClipboard">Partager le presse-papier</button>
         </div>
-        
-        <div class="quick-suggestions" id="quickSuggestions">
-            <!-- Les suggestions seront ajoutées dynamiquement -->
-        </div>
-        
+
         <div class="chat-input-container">
             <div class="input-wrapper">
-                <textarea 
-                    id="messageInput" 
-                    placeholder="Tapez votre message ici... (Entrée pour envoyer, Shift+Entrée pour nouvelle ligne)"
-                    rows="2"
-                ></textarea>
-                <button id="sendButton">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                    </svg>
-                </button>
+                <textarea id="messageInput" placeholder="Tapez votre message..."></textarea>
+                <button id="sendButton" class="send-btn">Envoyer</button>
             </div>
-        </div>
-        
-        <div class="chat-settings">
-            <div class="user-id-section">
-                <label for="userId">Votre ID utilisateur:</label>
-                <input type="text" id="userId" placeholder="Entrez votre pseudo">
-            </div>
-            <div class="partner-id-section">
-                <label for="partnerId">ID de votre copine:</label>
-                <input type="text" id="partnerId" placeholder="Entrez son pseudo">
-            </div>
-            <div class="share-code-section">
-                <button id="generateShareCode" class="quick-btn">🔗 Générer code de partage</button>
-                <input type="text" id="shareCodeInput" placeholder="Entrer un code de partage" style="margin-top: 4px; width: 100%; padding: 4px;">
-            </div>
-            <button id="clearHistory" class="clear-btn">🗑️ Vider l'historique</button>
         </div>
     </div>
     
